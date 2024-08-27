@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Word Translator</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/Users/apple/Downloads/Web/1.jpg'); /* Set initial background image */
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.5); /* Reduced transparency */
+            padding: 2em 2em;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 3em;
+        }
+
+        header h2 {
+            margin: 0.5em 0 1em;
+            font-weight: 400;
+            font-size: 2em;
+        }
+
+        button {
+            padding: 1em 2em;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 2em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05); 
+        }
+
+        footer {
+            background: rgb(60, 60, 60); /* Lighter gray background */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer .contact-info {
+            text-align: left;
+            margin-left: 2em;
+        }
+
+        footer .centered-text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        footer .right-info {
+            text-align: right;
+            margin-right: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .upcoming-button {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            padding: 1em 2em;
+            border: none;
+            background-color: #4CAF50; /* Same green color as the Get Started button */
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .upcoming-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: scale(1.05); 
+        }
+
+        .clock {
+            position: absolute;
+            top: 1em;
+            left: 1em;
+            font-size: 1.5em; /* Adjust this value as needed */
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            width: 120px; /* Fixed width */
+            height: 40px; /* Fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box; /* Ensures padding does not affect width/height */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <div class="clock" id="clock"></div>
+    <a href="page 3.html" class="upcoming-button">Upcoming</a>
+    
+    <header>
+        <img src="/Users/apple/Downloads/Web/logo.png" width="125" height="125" style="float: right;">
+        <h1 style="color: rgb(255, 253, 253); text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);">GLOSSARY</h1>
+        <h3 style="color: rgb(251, 249, 249);"><marquee>English සිංහල தமிழ்</marquee></h3>
+        <h1>Survey Technical Words Translator</h1>
+        <h3>Academic Subcommittee | Geomatics Students' Union</h3>
+        <h3>Sabaragamuwa University of Sri Lanka</h3> 
+        <button onclick="getStarted()">Get Started</button>
+    </header>
+    
+    <footer>
+        <p class="contact-info"><b>CONTACT INFO</b><br>
+            P.O. Box 02, Belihuloya, 70140, Sri Lanka<br>
+            +94-75 225 3818/ +94-70-6638715<br>
+            geo.stu.union@gmail.com
+        </p>
+        <p class="centered-text">Academic Subcommittee | Geomatics Students' Union<br>
+        Sabaragamuwa University of Sri Lanka</p>
+        <div class="right-info">
+            <img src="/Users/apple/Downloads/Web/ulogo.png" width="85" height="85" style="vertical-align: middle;">
+            <a href="https://www.sab.ac.lk"><u>SUSL Web</u></a>
+        </div>
+    </footer>
+    <script>
+        const images = [
+            '/Users/apple/Downloads/Web/1.jpg',
+            '/Users/apple/Downloads/Web/2.png',
+            '/Users/apple/Downloads/Web/3.jpg',
+            '/Users/apple/Downloads/Web/11.jpg',
+            '/Users/apple/Downloads/Web/4.jpg'  // New image added here
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = `url(${images[currentIndex]})`;
+        }
+
+        setTimeout(() => {
+            changeBackground(); // Change background after 1 second
+            setInterval(changeBackground, 5000); // Continue changing background every 5 seconds
+        }, 1000);
+
+        function getStarted() {
+            window.location.href = 'page 2.html'; 
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000); // Update the clock every second
+        updateClock(); // Initial call to display the clock immediately
+    </script>
+
+</body>
+</html>
